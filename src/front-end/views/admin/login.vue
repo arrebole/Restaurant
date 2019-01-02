@@ -17,7 +17,7 @@
       </el-row>
       <el-row type="flex" justify="center" class="login-input-end">
         <el-col :span="2">
-          <el-button type="success" round @click="tryLogin">成功按钮</el-button>
+          <el-button type="success" round @click="tryLogin">登录</el-button>
         </el-col>
       </el-row>
     </div>

@@ -1,16 +1,13 @@
 package main
 
-import (
-	"github.com/gin-gonic/gin"
-)
-
 func main() {
 
-	app := gin.Default()
-	app.GET("api/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	app.Run(":3000")
+	// 1.创建配置文件
+	localConfig := newConfig()
+
+	// 2.创建路由
+	service := newRouter(&localConfig)
+
+	// 3.监听运行
+	service.Run(localConfig.Port)
 }
