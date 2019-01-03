@@ -1,26 +1,27 @@
 <template>
   <div id="login">
-    <div class="login-form">
-      <el-row type="flex" justify="center">
-        <el-col :span="6" class="login-input-space">
-          <el-input v-model="user" placeholder="用户账号">
-            <i class="el-icon-star-off el-input__icon" slot="suffix"></i>
-          </el-input>
-        </el-col>
-      </el-row>
-      <el-row type="flex" justify="center">
-        <el-col :span="6" class="login-input-space">
-          <el-input type="password" v-model="passwd" placeholder="请输入密码">
-            <i class="el-icon-edit el-input__icon" slot="suffix"></i>
-          </el-input>
-        </el-col>
-      </el-row>
-      <el-row type="flex" justify="center" class="login-input-end">
-        <el-col :span="2">
-          <el-button type="success" round @click="tryLogin">登录</el-button>
-        </el-col>
-      </el-row>
-    </div>
+    <header class="login-header"></header>
+    <article class="login-content">
+      <section>
+        <h3 class="login-title">登录后台管理系统</h3>
+        <el-form :model="ruleForm" status-icon label-width="100px" class="ruleForm">
+          <el-form-item label="用户名">
+            <el-input v-model="ruleForm.UserName" placeholder="请输入用户名">
+              <i class="el-icon-share el-input__icon" slot="suffix"></i>
+            </el-input>
+          </el-form-item>
+          <el-form-item label="密码">
+            <el-input type="password" v-model="ruleForm.PassWord" placeholder="请输入密码">
+              <i class="el-icon-edit el-input__icon" slot="suffix"></i>
+            </el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submitForm()" :loading="loading">提交</el-button>
+            <el-button @click="resetForm()">重置</el-button>
+          </el-form-item>
+        </el-form>
+      </section>
+    </article>
   </div>
 </template>
 
@@ -29,15 +30,41 @@
 export default {
   data() {
     return {
-      user: "",
-      passwd: ""
+      ruleForm: {
+        UserName: "",
+        PassWord: ""
+      },
+      loading: false
     };
   },
   methods: {
-    tryLogin() {
-      if(this.user=='admin'&& this.passwd=="admin"){
-        this.$router.push("/");
-      }
+    submitForm() {
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+        if (
+          this.ruleForm.UserName == "admin" &&
+          this.ruleForm.PassWord == "admin123"
+        ) {
+          this.$notify({
+            title: "成功",
+            message: "登录成功",
+            type: "success"
+          });
+          this.$store.commit("onAdmin");
+
+          this.$router.push("/admin");
+        } else {
+          this.$notify.error({
+            title: "错误",
+            message: "密码或账户错误"
+          });
+        }
+      }, 300);
+    },
+    resetForm() {
+      this.ruleForm.UserName = "";
+      this.ruleForm.PassWord = "";
     }
   }
 };

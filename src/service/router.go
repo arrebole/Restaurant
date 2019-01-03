@@ -14,23 +14,23 @@ func noRoute(ctx *gin.Context) {
 	if (path[1] != "") && (path[1] == "api") {
 		ctx.JSON(http.StatusNotFound, gin.H{"msg": "no route", "body": nil})
 	} else {
-		ctx.HTML(http.StatusOK, "index.html", "")
+		ctx.HTML(http.StatusOK, "index.html", nil)
 	}
 }
 
 func newRouter(localConfig *config) *gin.Engine {
 
+	// 设置编译环境为发布模式
+	// gin.SetMode(gin.ReleaseMode)
+
+	// 默认中间键
 	router := gin.Default()
-	// 默认中间件
-	router.Use(gin.Logger())
-	router.Use(gin.Recovery())
 
 	// 前端路由处理
 	router.NoRoute(noRoute)
 
 	// 静态文件处理
 	router.Use(static.Serve("/", static.LocalFile((*localConfig).StaticFolder, true)))
-	router.LoadHTMLGlob(localConfig.IndexFile)
 
 	return router
 }

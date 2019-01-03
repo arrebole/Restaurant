@@ -1,22 +1,18 @@
-
-// #login{
-//     display: block;
-//     overflow: hidden;
-//     width: 60%;
-//     margin: 60px auto;
-// }
-
-.login-form{
-    margin-top: 40px;
-    //display: block;
-//     width: 600px;
-//     margin: 0px 20px;
-//     font-size: 18px;
+.login-header{
+    height: 80px;
+    background-color: rgb(233, 233, 233);
 }
 
-.login-input-space{
-    margin: 5px 0;
+.login-content{
+    padding: 20px 0;
 }
-.login-input-end{
-    margin: 10px 0px;
+.login-title{
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    font-size: 30px;
+    text-align: center;
+    margin: 40px 0;
+}
+.ruleForm{
+    width: 600px;
+    margin: 0 auto;
 }
