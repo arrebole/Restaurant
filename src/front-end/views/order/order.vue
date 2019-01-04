@@ -17,8 +17,8 @@
           <el-table-column prop="count" label="数量"></el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
-              <el-button size="mini" type="danger" @click="handleDecrease(scope.row)">减少</el-button>
               <el-button size="mini" @click="handleAdd(scope.row)">添加</el-button>
+              <el-button size="mini" type="danger" @click="handleDecrease(scope.row)">减少</el-button>
             </template>
           </el-table-column>
         </el-table>
