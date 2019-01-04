@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import admin from './views/admin/admin.vue'
-import login from './views/admin/login.vue'
+import login from './views/login/login.vue'
 import order from './views/order/order.vue'
 
 Vue.use(Router)
@@ -25,7 +25,7 @@ export default new Router({
       component: admin,
     },
     {
-      path: '/admin/login',
+      path: '/login',
       name: 'login',
       component: login,
     },

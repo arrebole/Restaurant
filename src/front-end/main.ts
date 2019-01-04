@@ -17,12 +17,12 @@ Vue.use(ElementUI);
 // 全局路由守卫
 router.beforeEach((to, from, next) => {
 
-  if (to.path == "/admin" && !store.state.admin) {
-    next("/admin/login");
+  if (to.name == "admin" && !store.state.admin) {
+    next({ name: "login" });
 
   }
-  if (to.path == "/admin/login" && store.state.admin) {
-    next("/admin");
+  if (to.name == "login" && store.state.admin) {
+    next({ name: "admin" });
 
   }
   next();

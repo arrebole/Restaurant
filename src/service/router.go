@@ -21,7 +21,7 @@ func noRoute(ctx *gin.Context) {
 func newRouter(localConfig *config) *gin.Engine {
 
 	// 设置编译环境为发布模式
-	// gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.ReleaseMode)
 
 	// 默认中间键
 	router := gin.Default()
