@@ -31,6 +31,7 @@ func newRouter(localConfig *config) *gin.Engine {
 
 	// 静态文件处理
 	router.Use(static.Serve("/", static.LocalFile((*localConfig).StaticFolder, true)))
+	router.LoadHTMLGlob(localConfig.IndexFile)
 
 	return router
 }

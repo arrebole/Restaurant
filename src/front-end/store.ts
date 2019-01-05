@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    "admin": true,
+    "admin": false,
   },
   mutations: {
     onAdmin (state) {
